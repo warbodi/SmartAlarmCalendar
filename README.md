@@ -10,7 +10,7 @@
 Unlike traditional alarm clocks based on days of the week (Monday-Friday), **Smart Alarm Calendar** allows you to create **Alarm Sets (Presets)** and assign them to **any calendar date** with a single tap or through multi-date selection.
 
 ---
-<img width="500" alt="1" src="https://github.com/user-attachments/assets/ad9e77f0-0eab-4f0a-8116-39942eca8f0d" /> <img width="500" alt="2" src="https://github.com/user-attachments/assets/00468344-0339-44bc-a43f-463aed7a657c" />
+<img width="400" alt="1" src="https://github.com/user-attachments/assets/ad9e77f0-0eab-4f0a-8116-39942eca8f0d" /> <img width="400" alt="2" src="https://github.com/user-attachments/assets/00468344-0339-44bc-a43f-463aed7a657c" />
 
 ## Key Features
 
