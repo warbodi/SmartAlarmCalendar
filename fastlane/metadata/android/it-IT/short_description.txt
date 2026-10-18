@@ -1,0 +1,1 @@
+Sveglia flessibile basata su calendario per turni ed orari dinamici.

@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Smart Alarm Calendar</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_calendar">Calendario</string>
+    <string name="tab_presets">Preset</string>
+    <string name="tab_today">Oggi</string>
+    <string name="tab_settings">Impostazioni</string>
+
+    <!-- Calendar Screen -->
+    <string name="multi_days">Multi-Giorni</string>
+    <string name="selection_active">Selezione Attiva</string>
+    <string name="selected_days">%d giorni selezionati</string>
+    <string name="assign_preset">Assegna Preset</string>
+    <string name="clear">Pulisci</string>
+    <string name="add_set">Aggiungi Set</string>
+    <string name="no_preset_assigned_date">Nessun set di sveglie assegnato per questa data.</string>
+    <string name="choose_preset_for_days">Scegli Preset per %d giorni selezionati</string>
+    <string name="choose_preset_for_date">Scegli Preset per il %s</string>
+    <string name="no_presets_available">Nessun preset disponibile. Crea un preset nella scheda \'Preset\'!</string>
+    <string name="prev_month">Mese precedente</string>
+    <string name="next_month">Mese successivo</string>
+
+    <!-- Presets Screen -->
+    <string name="preset_list_title">Set di Sveglie (Preset)</string>
+    <string name="preset_list_subtitle">Gestisci i modelli di sveglia</string>
+    <string name="test_button">Prova Sveglia (+1 min)</string>
+    <string name="test_button_title">Prova Sveglia</string>
+    <string name="test_button_sub">(+1 min)</string>
+    <string name="new_preset_button">Nuovo Preset</string>
+    <string name="alarms_count">%d Sveglie</string>
+    <string name="no_presets_yet">Nessun preset creato. Tocca \'Nuovo Preset\' per crearne uno!</string>
+    <string name="edit_preset">Modifica preset</string>
+    <string name="delete_preset">Elimina preset</string>
+
+    <!-- Edit Preset Screen -->
+    <string name="edit_preset_title">Modifica Preset</string>
+    <string name="new_preset_title_screen">Nuovo Preset</string>
+    <string name="preset_name_label">Nome Preset (es. Turno Mattina)</string>
+    <string name="preset_desc_label">Descrizione (opzionale)</string>
+    <string name="color_label">Colore Badge Preset:</string>
+    <string name="alarms_in_preset">Sveglie in questo set:</string>
+    <string name="add_alarm_button">Aggiungi Sveglia</string>
+    <string name="save_preset_button">Salva Preset</string>
+    <string name="delete_alarm">Elimina sveglia</string>
+
+    <!-- Today Screen -->
+    <string name="today_title">Oggi</string>
+    <string name="today_preset_label">Preset del giorno (%d):</string>
+    <string name="today_alarms_label">Sveglie di Oggi (%d)</string>
+    <string name="no_preset_assigned_today">Nessun preset assegnato per oggi</string>
+    <string name="no_preset_today_desc">Vai al Calendario o usa il tasto \'Test\' nei Preset per assegnarne uno.</string>
+    <string name="open_calendar_button">Apri Calendario</string>
+    <string name="no_active_alarms_today">Nessuna sveglia attiva nel preset per oggi.</string>
+    <string name="already_rung">Già suonata</string>
+    <string name="dismissed_early">Disattivata in anticipo</string>
+    <string name="configure_lockscreen_perm">Configura Permessi Schermo Bloccato</string>
+    <string name="xiaomi_perm_desc">Xiaomi / MIUI: Abilita \'Mostra nella schermata di blocco\' nei permessi dell\'app.</string>
+    <string name="overlay_perm_desc">Permesso \'Mostra sopra altre app\' consigliato per la sveglia a tutto schermo.</string>
+    <string name="exact_alarm_perm_desc">Abilita il permesso per le sveglie esatte nelle impostazioni.</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_app_title">Impostazioni App</string>
+    <string name="language_title">Lingua dell\'App</string>
+    <string name="lang_system">Predefinito di sistema</string>
+    <string name="lang_italian">Italiano</string>
+    <string name="lang_english">English (Inglese)</string>
+    <string name="theme_title">Tema dell\'App</string>
+    <string name="theme_system">Predefinito di sistema</string>
+    <string name="theme_light">Tema Chiaro</string>
+    <string name="theme_dark">Tema Scuro</string>
+    <string name="ring_color_title">Colore Schermata Sveglia</string>
+    <string name="ring_color_desc">Scegli il colore dello sfondo per la schermata della sveglia:</string>
+    <string name="custom_msg_title">Messaggio di Sveglia</string>
+    <string name="custom_msg_label">Messaggio sullo Schermo</string>
+    <string name="default_alarm_msg">È ORA DELLA SVEGLIA!</string>
+    <string name="ringtone_title">Suoneria Sveglia</string>
+    <string name="selected_ringtone">Suoneria selezionata: %s</string>
+    <string name="default_ringtone">Suoneria Predefinita</string>
+    <string name="choose_ringtone_btn">Scegli Suoneria dalle Impostazioni</string>
+    <string name="vibration_title">Vibrazione Sveglia</string>
+    <string name="pre_alarm_title">Notifica Pre-Sveglia</string>
+    <string name="pre_alarm_subtitle">Avviso 1 ora prima dell\'orario</string>
+    <string name="snooze_duration_title">Durata Snooze</string>
+    <string name="snooze_min">%d min</string>
+
+    <!-- Alarm Ring Screen & Notifications -->
+    <string name="swipe_to_dismiss">SCORRI VERSO L\'ALTO PER SPEGNERE</string>
+    <string name="next_alarm_title">Prossima sveglia: %s</string>
+    <string name="alarm_subtitle">Sveglia</string>
+    <string name="dismiss_action">Disattiva</string>
+    <string name="alarm_scheduled_text">In programma. Tocca per disattivare.</string>
+
+    <!-- Widget -->
+    <string name="widget_title">Sveglie Oggi e Domani</string>
+    <string name="widget_empty">Nessuna sveglia per oggi e domani</string>
+    <string name="widget_today_header">OGGI - %s</string>
+    <string name="widget_tomorrow_header">DOMANI - %s</string>
+    <string name="refresh">Aggiorna</string>
+</resources>

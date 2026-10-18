@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/widget_item_bg">
+
+    <ImageView
+        android:id="@+id/v_preset_accent"
+        android:layout_width="4dp"
+        android:layout_height="28dp"
+        android:background="#E53935"
+        android:contentDescription="Colore Preset" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_widget_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06:30"
+            android:textColor="@color/widget_text_primary"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_widget_preset_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turno Mattina"
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btn_widget_toggle"
+        android:layout_width="44dp"
+        android:layout_height="24dp"
+        android:src="@drawable/widget_switch_on"
+        android:contentDescription="Switch Sveglia" />
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Widget Adaptive Colors (Dark Mode) -->
+    <color name="widget_bg_color">#181824</color>
+    <color name="widget_item_bg_color">#242436</color>
+    <color name="widget_text_primary">#FFFFFF</color>
+    <color name="widget_text_secondary">#B0B0C0</color>
+    <color name="widget_header_bg">#2C2C40</color>
+</resources>

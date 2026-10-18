@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Smart Alarm Calendar</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_calendar">Calendar</string>
+    <string name="tab_presets">Presets</string>
+    <string name="tab_today">Today</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Calendar Screen -->
+    <string name="multi_days">Multi-Days</string>
+    <string name="selection_active">Selection Active</string>
+    <string name="selected_days">%d days selected</string>
+    <string name="assign_preset">Assign Preset</string>
+    <string name="clear">Clear</string>
+    <string name="add_set">Add Set</string>
+    <string name="no_preset_assigned_date">No alarm set assigned for this date.</string>
+    <string name="choose_preset_for_days">Choose Preset for %d selected days</string>
+    <string name="choose_preset_for_date">Choose Preset for %s</string>
+    <string name="no_presets_available">No presets available. Create a preset in the \'Presets\' tab!</string>
+    <string name="prev_month">Previous month</string>
+    <string name="next_month">Next month</string>
+
+    <!-- Presets Screen -->
+    <string name="preset_list_title">Alarm Sets (Presets)</string>
+    <string name="preset_list_subtitle">Manage your alarm templates</string>
+    <string name="test_button">Test Alarm (+1 min)</string>
+    <string name="test_button_title">Test Alarm</string>
+    <string name="test_button_sub">(+1 min)</string>
+    <string name="new_preset_button">New Preset</string>
+    <string name="alarms_count">%d Alarms</string>
+    <string name="no_presets_yet">No presets created yet. Tap \'New Preset\' to create one!</string>
+    <string name="edit_preset">Edit preset</string>
+    <string name="delete_preset">Delete preset</string>
+
+    <!-- Edit Preset Screen -->
+    <string name="edit_preset_title">Edit Preset</string>
+    <string name="new_preset_title_screen">New Preset</string>
+    <string name="preset_name_label">Preset Name (e.g. Morning Shift)</string>
+    <string name="preset_desc_label">Description (optional)</string>
+    <string name="color_label">Preset Badge Color:</string>
+    <string name="alarms_in_preset">Alarms in this set:</string>
+    <string name="add_alarm_button">Add Alarm</string>
+    <string name="save_preset_button">Save Preset</string>
+    <string name="delete_alarm">Delete alarm</string>
+
+    <!-- Today Screen -->
+    <string name="today_title">Today</string>
+    <string name="today_preset_label">Today\'s Preset (%d):</string>
+    <string name="today_alarms_label">Today\'s Alarms (%d)</string>
+    <string name="no_preset_assigned_today">No preset assigned for today</string>
+    <string name="no_preset_today_desc">Go to Calendar or use \'Test\' in Presets to assign one.</string>
+    <string name="open_calendar_button">Open Calendar</string>
+    <string name="no_active_alarms_today">No active alarms in preset for today.</string>
+    <string name="already_rung">Already rung</string>
+    <string name="dismissed_early">Dismissed early</string>
+    <string name="configure_lockscreen_perm">Configure Lockscreen Permissions</string>
+    <string name="xiaomi_perm_desc">Xiaomi / MIUI: Enable \'Show on Lock screen\' in app permissions.</string>
+    <string name="overlay_perm_desc">\'Display over other apps\' permission recommended for full-screen alarm.</string>
+    <string name="exact_alarm_perm_desc">Enable permission for exact alarms in system settings.</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_app_title">App Settings</string>
+    <string name="language_title">App Language</string>
+    <string name="lang_system">System Default</string>
+    <string name="lang_italian">Italiano (Italian)</string>
+    <string name="lang_english">English</string>
+    <string name="theme_title">App Theme</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light Theme</string>
+    <string name="theme_dark">Dark Theme</string>
+    <string name="ring_color_title">Alarm Screen Color</string>
+    <string name="ring_color_desc">Choose background color for the full-screen alarm:</string>
+    <string name="custom_msg_title">Alarm Message</string>
+    <string name="custom_msg_label">Screen Message</string>
+    <string name="default_alarm_msg">IT\'S ALARM TIME!</string>
+    <string name="ringtone_title">Alarm Ringtone</string>
+    <string name="selected_ringtone">Selected ringtone: %s</string>
+    <string name="default_ringtone">Default Ringtone</string>
+    <string name="choose_ringtone_btn">Choose Ringtone in Settings</string>
+    <string name="vibration_title">Alarm Vibration</string>
+    <string name="pre_alarm_title">Pre-Alarm Notification</string>
+    <string name="pre_alarm_subtitle">Alert 1 hour before scheduled time</string>
+    <string name="snooze_duration_title">Snooze Duration</string>
+    <string name="snooze_min">%d min</string>
+
+    <!-- Alarm Ring Screen & Notifications -->
+    <string name="swipe_to_dismiss">SWIPE UP TO DISMISS</string>
+    <string name="next_alarm_title">Next alarm: %s</string>
+    <string name="alarm_subtitle">Alarm</string>
+    <string name="dismiss_action">Dismiss</string>
+    <string name="alarm_scheduled_text">Scheduled. Tap to dismiss.</string>
+
+    <!-- Widget -->
+    <string name="widget_title">Today &amp; Tomorrow Alarms</string>
+    <string name="widget_empty">No alarms for today and tomorrow</string>
+    <string name="widget_today_header">TODAY - %s</string>
+    <string name="widget_tomorrow_header">TOMORROW - %s</string>
+    <string name="refresh">Refresh</string>
+</resources>
