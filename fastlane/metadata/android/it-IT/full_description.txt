@@ -1,6 +1,7 @@
 Smart Alarm Calendar è un'applicazione Android open source concepita per chi lavora su turni, ha orari variabili o segue routine non settimanali.
 
 Caratteristiche principali:
+
 - Calendario Interattivo: Assegna modelli di sveglia (Preset) a singole date o selezioni di più giorni con un solo tocco.
 - Preset Personalizzabili: Crea modelli con sveglie multiple (es. Turno Mattina, Turno Pomeriggio, Giorno Libero).
 - Widget per Schermata Home: Visualizza le sveglie di Oggi e Domani in stile Proton Calendar con switch a levetta per attivarle o disattivarle direttamente.

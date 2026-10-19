@@ -1,6 +1,7 @@
 Smart Alarm Calendar is an open source Android application designed for shift workers, flexible schedules, and non-weekly routines.
 
 Key Features:
+
 - Interactive Calendar: Assign alarm presets to specific dates or multi-date selections with a single tap.
 - Customizable Presets: Create preset templates with multiple alarms (e.g. Morning Shift, Afternoon Shift, Day Off).
 - Home Screen Widget: View today's and tomorrow's alarms in a clean Proton-style layout with direct toggle switches.
