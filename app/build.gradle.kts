@@ -26,6 +26,11 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        dependenciesInfo {
+            includeInApk = false
+            includeInBundle = false
+        }
     }
 
     signingConfigs {
