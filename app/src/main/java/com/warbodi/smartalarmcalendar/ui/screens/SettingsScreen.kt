@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.net.Uri
+import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
@@ -28,6 +29,7 @@ import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.NotificationsActive
+import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Snooze
 import androidx.compose.material.icons.filled.Vibration
 import androidx.compose.material3.Card
@@ -70,7 +72,6 @@ fun SettingsScreen(
     }
 
     var appTheme by remember { mutableStateOf(prefs.getString("app_theme_mode", "system") ?: "system") }
-    var alarmBgColor by remember { mutableStateOf(prefs.getString("alarm_bg_color", "#E53935") ?: "#E53935") }
     val defaultMsg = stringResource(R.string.default_alarm_msg)
     var alarmMessage by remember { mutableStateOf(prefs.getString("alarm_custom_message", defaultMsg) ?: defaultMsg) }
     var ringtoneUri by remember { mutableStateOf(prefs.getString("alarm_ringtone_uri", "") ?: "") }
@@ -188,29 +189,6 @@ fun SettingsScreen(
                         Text(text = label)
                     }
                 }
-            }
-        }
-
-        // 3. Colore Sfondo della Schermata Sveglia
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.ColorLens, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = stringResource(R.string.ring_color_title), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(text = stringResource(R.string.ring_color_desc), style = MaterialTheme.typography.bodySmall)
-                ColorPickerRow(
-                    selectedHex = alarmBgColor,
-                    onColorSelected = { hex ->
-                        alarmBgColor = hex
-                        prefs.edit().putString("alarm_bg_color", hex).apply()
-                    }
-                )
             }
         }
 
@@ -364,6 +342,59 @@ fun SettingsScreen(
                                 Text(text = stringResource(R.string.snooze_min, min), style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        // 7. Gestione Permessi
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Security, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.permissions_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                OutlinedButton(
+                    onClick = {
+                        if (com.warbodi.smartalarmcalendar.alarm.XiaomiPermissionHelper.isXiaomiDevice()) {
+                            com.warbodi.smartalarmcalendar.alarm.XiaomiPermissionHelper.openXiaomiPermissionSettings(context)
+                        } else {
+                            val intent = Intent(
+                                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                Uri.parse("package:${context.packageName}")
+                            )
+                            context.startActivity(intent)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.overlay_perm_btn))
+                }
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                    OutlinedButton(
+                        onClick = {
+                            val intent = Intent(
+                                Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,
+                                Uri.parse("package:${context.packageName}")
+                            )
+                            context.startActivity(intent)
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(stringResource(R.string.exact_alarm_perm_btn))
                     }
                 }
             }

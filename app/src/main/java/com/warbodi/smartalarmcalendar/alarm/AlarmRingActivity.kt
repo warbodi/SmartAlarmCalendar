@@ -78,7 +78,8 @@ class AlarmRingActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val prefs = getSharedPreferences("smart_alarm_prefs", Context.MODE_PRIVATE)
-        val customColorHex = prefs.getString("alarm_bg_color", "#E53935") ?: "#E53935"
+        val presetColorHex = intent.getStringExtra(AlarmScheduler.EXTRA_PRESET_COLOR) ?: ""
+        val customColorHex = if (presetColorHex.isNotBlank()) presetColorHex else prefs.getString("alarm_bg_color", "#E53935") ?: "#E53935"
         val customMessage = prefs.getString("alarm_custom_message", "È ORA DELLA SVEGLIA!") ?: "È ORA DELLA SVEGLIA!"
         val ringtoneUriString = prefs.getString("alarm_ringtone_uri", "") ?: ""
         val enableVibration = prefs.getBoolean("enable_vibration", true)

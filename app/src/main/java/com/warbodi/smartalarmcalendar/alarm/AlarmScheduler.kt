@@ -21,6 +21,7 @@ object AlarmScheduler {
     const val EXTRA_ALARM_ID = "extra_alarm_id"
     const val EXTRA_ALARM_LABEL = "extra_alarm_label"
     const val EXTRA_ALARM_TIME = "extra_alarm_time"
+    const val EXTRA_PRESET_COLOR = "extra_preset_color"
     private const val PRE_ALARM_REQUEST_CODE = 9999
 
     private val _dismissedEarlySet = MutableStateFlow<Set<String>>(emptySet())
@@ -68,7 +69,8 @@ object AlarmScheduler {
     fun scheduleAlarmForDate(
         context: Context,
         dateString: String, // "YYYY-MM-DD"
-        alarm: PresetAlarm
+        alarm: PresetAlarm,
+        colorHex: String = "#E53935"
     ) {
         if (!alarm.isEnabled) return
         if (isAlarmDismissedEarly(context, dateString, alarm.id)) return
@@ -91,6 +93,7 @@ object AlarmScheduler {
                 putExtra(PreAlarmReceiver.EXTRA_DATE_STRING, dateString)
                 putExtra(EXTRA_ALARM_LABEL, alarm.label)
                 putExtra(EXTRA_ALARM_TIME, alarm.formatTime())
+                putExtra(EXTRA_PRESET_COLOR, colorHex)
             }
 
             val requestCode = generateRequestCode(dateString, alarm.id)
@@ -138,7 +141,7 @@ object AlarmScheduler {
             val presetWithAlarms = database.presetDao().getPresetWithAlarmsByIdSync(assignment.presetId)
             presetWithAlarms?.alarms?.forEach { alarm ->
                 if (alarm.isEnabled && !isAlarmDismissedEarly(context, assignment.dateString, alarm.id)) {
-                    scheduleAlarmForDate(context, assignment.dateString, alarm)
+                    scheduleAlarmForDate(context, assignment.dateString, alarm, presetWithAlarms.preset.colorHex)
                 }
             }
         }

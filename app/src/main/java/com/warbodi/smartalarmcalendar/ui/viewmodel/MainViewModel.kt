@@ -134,13 +134,30 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun createAndAssignTestPreset() {
         viewModelScope.launch {
+            val palette = listOf(
+                "#1E88E5", // Blue
+                "#43A047", // Green
+                "#FB8C00", // Orange
+                "#8E24AA", // Purple
+                "#00ACC1", // Cyan
+                "#D81B60", // Pink
+                "#5E35B1", // Deep Purple
+                "#E53935"  // Red
+            )
+            val existingTest = presetsWithAlarms.value.find { it.preset.name == "Test" }
+            val currentColor = existingTest?.preset?.colorHex ?: ""
+            val availableColors = palette.filter { it != currentColor }
+            val randomColor = availableColors.random()
+
             val testTime = java.time.LocalTime.now().plusMinutes(1)
             val testPreset = Preset(
+                id = existingTest?.preset?.id ?: 0L,
                 name = "Test",
-                colorHex = "#E53935",
+                colorHex = randomColor,
                 description = "Preset di test (+1 minuto da adesso)"
             )
             val testAlarm = PresetAlarm(
+                presetId = testPreset.id,
                 hour = testTime.hour,
                 minute = testTime.minute
             )

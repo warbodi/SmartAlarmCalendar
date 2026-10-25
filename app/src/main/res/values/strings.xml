@@ -61,6 +61,9 @@
 
     <!-- Settings Screen -->
     <string name="settings_app_title">App Settings</string>
+    <string name="permissions_title">Permissions &amp; Lock Screen</string>
+    <string name="overlay_perm_btn">Configure Overlay / Lock Screen Permissions</string>
+    <string name="exact_alarm_perm_btn">Configure Exact Alarm Permissions</string>
     <string name="language_title">App Language</string>
     <string name="lang_system">System Default</string>
     <string name="lang_italian">Italiano (Italian)</string>

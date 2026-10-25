@@ -61,6 +61,9 @@
 
     <!-- Settings Screen -->
     <string name="settings_app_title">Impostazioni App</string>
+    <string name="permissions_title">Permessi e Schermo Bloccato</string>
+    <string name="overlay_perm_btn">Configura Permesso \'Mostra sopra altre app\'</string>
+    <string name="exact_alarm_perm_btn">Configura Permesso Sveglie Esatte</string>
     <string name="language_title">Lingua dell\'App</string>
     <string name="lang_system">Predefinito di sistema</string>
     <string name="lang_italian">Italiano</string>

@@ -23,6 +23,36 @@ AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val label = intent.getStringExtra(AlarmScheduler.EXTRA_ALARM_LABEL) ?: "Sveglia"
         val time = intent.getStringExtra(AlarmScheduler.EXTRA_ALARM_TIME) ?: ""
+        var colorHex = intent.getStringExtra(AlarmScheduler.EXTRA_PRESET_COLOR) ?: ""
+        val alarmId = intent.getLongExtra(AlarmScheduler.EXTRA_ALARM_ID, -1L)
+        val dateString = intent.getStringExtra(PreAlarmReceiver.EXTRA_DATE_STRING) ?: ""
+
+        val database = com.warbodi.smartalarmcalendar.data.db.AppDatabase.getInstance(context)
+        kotlinx.coroutines.runBlocking {
+            try {
+                if (dateString.isNotBlank()) {
+                    val assignments = database.calendarDao().getAssignmentsForDateSync(dateString)
+                    for (ass in assignments) {
+                        val p = database.presetDao().getPresetWithAlarmsByIdSync(ass.presetId)
+                        if (p != null && p.alarms.any { it.id == alarmId }) {
+                            colorHex = p.preset.colorHex
+                            break
+                        }
+                    }
+                }
+                if (colorHex.isBlank() && alarmId != -1L) {
+                    val presets = database.presetDao().getAllPresetsWithAlarmsSync()
+                    for (presetWithAlarms in presets) {
+                        if (presetWithAlarms.alarms.any { it.id == alarmId }) {
+                            colorHex = presetWithAlarms.preset.colorHex
+                            break
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
         // Acquire WakeLock to wake CPU and turn screen on
         val powerManager = context.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -39,8 +69,10 @@ AlarmReceiver : BroadcastReceiver() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
                     Intent.FLAG_ACTIVITY_SINGLE_TOP
+            data = android.net.Uri.parse("alarm_color://${System.currentTimeMillis()}/$colorHex")
             putExtra(AlarmScheduler.EXTRA_ALARM_LABEL, label)
             putExtra(AlarmScheduler.EXTRA_ALARM_TIME, time)
+            putExtra(AlarmScheduler.EXTRA_PRESET_COLOR, colorHex)
         }
 
         val notificationManager =
@@ -73,9 +105,10 @@ AlarmReceiver : BroadcastReceiver() {
             notificationManager.createNotificationChannel(channel)
         }
 
+        val requestCode = (System.currentTimeMillis() % 1000000).toInt()
         val fullScreenPendingIntent = PendingIntent.getActivity(
             context,
-            NOTIFICATION_ID,
+            requestCode,
             ringIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )

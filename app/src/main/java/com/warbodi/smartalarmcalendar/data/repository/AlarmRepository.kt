@@ -104,7 +104,7 @@ class AlarmRepository(private val context: Context) {
         val newPreset = presetDao.getPresetWithAlarmsByIdSync(presetId)
         newPreset?.alarms?.forEach { alarm ->
             if (alarm.isEnabled) {
-                AlarmScheduler.scheduleAlarmForDate(context, dateString, alarm)
+                AlarmScheduler.scheduleAlarmForDate(context, dateString, alarm, newPreset.preset.colorHex)
             }
         }
 
@@ -121,7 +121,7 @@ class AlarmRepository(private val context: Context) {
 
             newPreset.alarms.forEach { alarm ->
                 if (alarm.isEnabled) {
-                    AlarmScheduler.scheduleAlarmForDate(context, dateStr, alarm)
+                    AlarmScheduler.scheduleAlarmForDate(context, dateStr, alarm, newPreset.preset.colorHex)
                 }
             }
         }
@@ -156,9 +156,12 @@ class AlarmRepository(private val context: Context) {
     }
 
     suspend fun toggleAlarmEnabled(dateString: String, alarm: PresetAlarm, isEnabled: Boolean) {
+        val presetWithAlarms = presetDao.getPresetWithAlarmsByIdSync(alarm.presetId)
+        val colorHex = presetWithAlarms?.preset?.colorHex ?: "#E53935"
+
         if (isEnabled) {
             AlarmScheduler.unmarkAlarmDismissedEarly(context, dateString, alarm.id)
-            AlarmScheduler.scheduleAlarmForDate(context, dateString, alarm)
+            AlarmScheduler.scheduleAlarmForDate(context, dateString, alarm, colorHex)
         } else {
             AlarmScheduler.markAlarmDismissedEarly(context, dateString, alarm.id)
             AlarmScheduler.cancelAlarmForDate(context, dateString, alarm.id)
