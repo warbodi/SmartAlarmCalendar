@@ -79,7 +79,8 @@ class WidgetAlarmFactory(private val context: Context) : RemoteViewsService.Remo
 
                 if (todayItems.isNotEmpty()) {
                     todayItems.sortBy { parseTimeToMinutes(it.time) }
-                    val todayHeader = "OGGI - " + today.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.ITALIAN)).replaceFirstChar { it.uppercase() }
+                    val todayFormatted = today.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.getDefault())).replaceFirstChar { it.uppercase() }
+                    val todayHeader = context.getString(R.string.widget_today_header, todayFormatted)
                     items.add(WidgetListItem(type = WidgetItemType.HEADER, headerTitle = todayHeader))
                     items.addAll(todayItems)
                 }
@@ -110,7 +111,8 @@ class WidgetAlarmFactory(private val context: Context) : RemoteViewsService.Remo
 
                 if (tomorrowItems.isNotEmpty()) {
                     tomorrowItems.sortBy { parseTimeToMinutes(it.time) }
-                    val tomorrowHeader = "DOMANI - " + tomorrow.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.ITALIAN)).replaceFirstChar { it.uppercase() }
+                    val tomorrowFormatted = tomorrow.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.getDefault())).replaceFirstChar { it.uppercase() }
+                    val tomorrowHeader = context.getString(R.string.widget_tomorrow_header, tomorrowFormatted)
                     items.add(WidgetListItem(type = WidgetItemType.HEADER, headerTitle = tomorrowHeader))
                     items.addAll(tomorrowItems)
                 }

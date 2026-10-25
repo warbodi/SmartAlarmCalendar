@@ -18,14 +18,14 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@mipmap/ic_launcher"
-            android:contentDescription="Smart Alarm Logo" />
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:text="Sveglie Oggi e Domani"
+            android:text="@string/widget_title"
             android:textColor="@color/widget_text_primary"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:layout_height="32dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_popup_sync"
-            android:contentDescription="Aggiorna" />
+            android:contentDescription="@string/refresh" />
     </LinearLayout>
 
     <!-- ListView for Alarms Today & Tomorrow -->
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Nessuna sveglia per oggi e domani"
+        android:text="@string/widget_empty"
         android:textColor="@color/widget_text_secondary"
         android:textSize="13sp"
         android:visibility="gone" />
