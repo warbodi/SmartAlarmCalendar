@@ -160,9 +160,14 @@ fun MainScreen(viewModel: MainViewModel) {
                             coroutineScope.launch { pagerState.animateScrollToPage(0) }
                         }
                     )
-                    3 -> SettingsScreen(
-                        onThemeModeChanged = { mode -> viewModel.setAppThemeMode(mode) }
-                    )
+                    3 -> {
+                        val context = androidx.compose.ui.platform.LocalContext.current
+                        SettingsScreen(
+                            onThemeModeChanged = { mode -> viewModel.setAppThemeMode(mode) },
+                            onExportPresets = { uri -> viewModel.exportPresets(context, uri) },
+                            onImportPresets = { uri -> viewModel.importPresets(context, uri) }
+                        )
+                    }
                 }
             }
         }

@@ -23,6 +23,10 @@ class AlarmRepository(private val context: Context) {
         return presetDao.getPresetWithAlarmsById(presetId)
     }
 
+    suspend fun getAllPresetsWithAlarmsSync(): List<PresetWithAlarms> {
+        return presetDao.getAllPresetsWithAlarmsSync()
+    }
+
     suspend fun cleanCorruptedData() {
         val presets = presetDao.getAllPresetsWithAlarmsSync()
         for (presetWithAlarms in presets) {

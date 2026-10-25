@@ -24,8 +24,8 @@
     <!-- Presets Screen -->
     <string name="preset_list_title">Set di Sveglie (Preset)</string>
     <string name="preset_list_subtitle">Gestisci i modelli di sveglia</string>
-    <string name="test_button">Prova Sveglia (+1 min)</string>
-    <string name="test_button_title">Prova Sveglia</string>
+    <string name="test_button">Test (+1 min)</string>
+    <string name="test_button_title">Test</string>
     <string name="test_button_sub">(+1 min)</string>
     <string name="new_preset_button">Nuovo Preset</string>
     <string name="alarms_count">%d Sveglie</string>
@@ -61,6 +61,14 @@
 
     <!-- Settings Screen -->
     <string name="settings_app_title">Impostazioni App</string>
+    <string name="export_import_title">Backup e Ripristino Preset</string>
+    <string name="export_import_subtitle">Esporta o carica i tuoi modelli di sveglia in formato JSON</string>
+    <string name="export_btn">Esporta</string>
+    <string name="import_btn">Importa</string>
+    <string name="export_success">Preset esportati con successo!</string>
+    <string name="export_failed">Esportazione fallita. Riprova.</string>
+    <string name="import_success">%d preset importati con successo!</string>
+    <string name="import_failed">Importazione fallita. Formato JSON non valido.</string>
     <string name="permissions_title">Permessi e Schermo Bloccato</string>
     <string name="overlay_perm_btn">Configura Permesso \'Mostra sopra altre app\'</string>
     <string name="exact_alarm_perm_btn">Configura Permesso Sveglie Esatte</string>

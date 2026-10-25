@@ -2,6 +2,7 @@ package com.warbodi.smartalarmcalendar.ui.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.warbodi.smartalarmcalendar.data.model.Preset
@@ -164,6 +165,47 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val presetId = repository.savePresetWithAlarms(testPreset, listOf(testAlarm))
             val todayStr = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
             repository.assignPresetToDate(todayStr, presetId)
+        }
+    }
+
+    fun exportPresets(context: Context, uri: Uri) {
+        viewModelScope.launch {
+            try {
+                val presets = repository.getAllPresetsWithAlarmsSync()
+                val jsonText = com.warbodi.smartalarmcalendar.data.repository.PresetJsonExporter.exportToJson(presets)
+                context.contentResolver.openOutputStream(uri)?.use { os ->
+                    os.write(jsonText.toByteArray(Charsets.UTF_8))
+                }
+                android.widget.Toast.makeText(context, context.getString(com.warbodi.smartalarmcalendar.R.string.export_success), android.widget.Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                android.widget.Toast.makeText(context, context.getString(com.warbodi.smartalarmcalendar.R.string.export_failed), android.widget.Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    fun importPresets(context: Context, uri: Uri) {
+        viewModelScope.launch {
+            try {
+                val jsonText = context.contentResolver.openInputStream(uri)?.use { isStream ->
+                    isStream.bufferedReader().readText()
+                } ?: ""
+
+                if (jsonText.isNotBlank()) {
+                    val parsedPresets = com.warbodi.smartalarmcalendar.data.repository.PresetJsonExporter.parseFromJson(jsonText)
+                    for ((preset, alarms) in parsedPresets) {
+                        repository.savePresetWithAlarms(preset, alarms)
+                    }
+                    android.widget.Toast.makeText(
+                        context,
+                        context.getString(com.warbodi.smartalarmcalendar.R.string.import_success, parsedPresets.size),
+                        android.widget.Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                android.widget.Toast.makeText(context, context.getString(com.warbodi.smartalarmcalendar.R.string.import_failed), android.widget.Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
